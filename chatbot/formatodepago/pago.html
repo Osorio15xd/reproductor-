@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Validación de Compra</title>
+    <link rel="stylesheet" href="styless.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <div class="card">
+            <div class="card-header">
+                <h1>Finalizar Compra</h1>
+                <p>Selecciona tu método de pago preferido</p>
+            </div>
+            
+            <div class="payment-methods">
+                <button type="button" class="payment-method active" id="creditCardBtn">
+                    <i class="fas fa-credit-card"></i>
+                    <span>Tarjeta de Crédito</span>
+                </button>
+                <button type="button" class="payment-method" id="paypalBtn">
+                    <i class="fab fa-paypal"></i>
+                    <span>PayPal</span>
+                </button>
+            </div>
+            
+            <div class="card-body">
+                <!-- Formulario de Tarjeta de Crédito -->
+                <form id="creditCardForm" class="payment-form">
+                    <div class="form-group">
+                        <label for="cardNumber">Número de Tarjeta</label>
+                        <div class="input-icon">
+                            <input type="text" id="cardNumber" name="cardNumber" placeholder="1234 5678 9012 3456" maxlength="19">
+                            <i class="fas fa-credit-card"></i>
+                        </div>
+                        <small class="error-message" id="cardNumberError"></small>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="expiryDate">Fecha de Expiración</label>
+                            <input type="text" id="expiryDate" name="expiryDate" placeholder="MM/AA" maxlength="5">
+                            <small class="error-message" id="expiryDateError"></small>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="cvv">CVV</label>
+                            <input type="text" id="cvv" name="cvv" placeholder="123" maxlength="3">
+                            <small class="error-message" id="cvvError"></small>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="cardName">Nombre en la Tarjeta</label>
+                        <input type="text" id="cardName" name="cardName" placeholder="Juan Pérez">
+                        <small class="error-message" id="cardNameError"></small>
+                    </div>
+                    
+                    <button type="submit" class="submit-btn">
+                        <i class="fas fa-lock"></i> Pagar Ahora
+                    </button>
+                </form>
+                
+                <!-- Formulario de PayPal -->
+                <div id="paypalForm" class="payment-form hidden">
+                    <div class="paypal-info">
+                        <img src="https://www.paypalobjects.com/webstatic/mktg/logo/pp_cc_mark_111x69.jpg" alt="PayPal Logo" class="paypal-logo">
+                        <p>Serás redirigido a PayPal para completar tu pago de forma segura.</p>
+                    </div>
+                    
+                    <button type="button" id="paypalRedirectBtn" class="submit-btn paypal-btn">
+                        <i class="fab fa-paypal"></i> Pagar con PayPal
+                    </button>
+                </div>
+            </div>
+            
+            <div class="card-footer">
+                <p><i class="fas fa-shield-alt"></i> Tus datos están protegidos con encriptación SSL de 256 bits</p>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Modal de Éxito -->
+    <div class="modal" id="successModal">
+        <div class="modal-content">
+            <span class="close-btn">&times;</span>
+            <div class="success-icon">
+                <i class="fas fa-check-circle"></i>
+            </div>
+            <h2>¡Pago Exitoso!</h2>
+            <p>Tu transacción ha sido procesada correctamente.</p>
+            <button class="modal-btn">Continuar</button>
+        </div>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>
